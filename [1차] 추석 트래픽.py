@@ -20,29 +20,18 @@ def solution(lines):
 
     # 각 요청에 대해
     for i in range(len(log)):
-        left_count = 1 # [시작시간 - 999, 시작시간] 범위의 처리 수
-        right_count = 1 # [끝시간, 끝시간 + 999] 범위의 처리 수
+        count = 1 # [끝시간, 끝시간 + 999] 범위의 처리 수
 
-        # 각 요청에 대해
-        for j in range(len(log)):
-            # 자기자신은 continue
-            if i == j:
-                continue
-            
-            # log[j]가 log[i]의 [시작시간 - 999, 시작시간] 범위와 만난다면
-            if log[i][0] < log[j][0] or log[i][0] - 999 > log[j][1]:
-                continue
-            else:
-                left_count += 1
+        # (i + 1)부터의 요청에 대해
+        for j in range(i + 1, len(log)):
 
             # log[j]가 log[i]의 [끝시간, 끝시간 + 999] 범위와 만난다면
-            if log[i][1] > log[j][1] or log[i][1] + 999 < log[j][0]:
+            if log[i][1] + 999 < log[j][0]:
                 continue
             else:
-                right_count += 1
+                count += 1
         
         # 결과값 갱신
-        count = max(left_count, right_count)
         answer = max(answer, count)
 
     return answer
