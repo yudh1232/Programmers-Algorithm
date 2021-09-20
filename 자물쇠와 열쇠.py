@@ -24,7 +24,7 @@ def solution(key, lock):
         # 키를 회전
         rotate_90(key, m)
 
-        # 한칸씩 이동하면 키를 자물쇠에 꽂아봄
+        # 한칸씩 이동하면서 키를 자물쇠에 꽂아봄
         for i in range(n - m, 2 * n + 1):
             for j in range(n - m, 2 * n + 1):
                 for a in range(m):
