@@ -35,7 +35,7 @@ def solution(board, moves):
         else:
             top = basket[-1]
             
-            # top과 인형을 교해서 같으면
+            # top과 인형을 비교해서 같으면
             if top == item:
                 basket.pop()
                 answer += 2
